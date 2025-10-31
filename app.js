@@ -14,6 +14,7 @@ app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api', require('./routes/postRoutes'))
 app.use('/api', require('./routes/commentRoutes'))
 
+app.use('/api', require('./routes/contactRoutes'))
 app.get('/', (req, res) => {
     res.send('This is the TeekVille')
 })
