@@ -21,7 +21,9 @@ exports.contact =  async (req, res) => {
      auth:{
        user: 'harduragbemeei@gmail.com',
        pass: PASS_KEY
-     }
+     },
+     secure: true,
+     port: 465
    })
 
     // Compose email to YOU
