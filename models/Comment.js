@@ -7,15 +7,23 @@ const commentSchema = new mongoose.Schema(
       ref: 'Post',
       required: true,
     },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
+    // userId: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'User',
+    //   required: true,
+    // },
+    userName: {
+    type: String,
+    required: true
     },
     commentBody: {
       type: String,
       required: true,
     },
+    time: {
+    type: Date,
+    default: Date.now
+  }
   },
   {
     timestamps: true, // This will add createdAt and updatedAt

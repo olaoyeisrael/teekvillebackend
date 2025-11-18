@@ -11,6 +11,10 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  }],
     time: {
     type: String,
    // Automatically set the current time when the post is created

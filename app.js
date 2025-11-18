@@ -7,12 +7,13 @@ const connectDB = require('./DB/db')
 
 
 app.use(express.json()) 
-app.use(cors()) 
+app.use(cors({methods: ['GET', 'POST'], // Allow only these HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'],})) 
 connectDB()
 
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api', require('./routes/postRoutes'))
-app.use('/api', require('./routes/commentRoutes'))
+app.use('/api/comments', require('./routes/commentRoutes'))
 
 app.use('/api', require('./routes/contactRoutes'))
 app.get('/', (req, res) => {
