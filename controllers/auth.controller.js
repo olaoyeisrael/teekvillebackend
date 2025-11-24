@@ -49,8 +49,8 @@ exports.register = async (req, res) => {
 //     })
 
 //  res.status(201).json({success: true ,message:'Otp sent to the email'});
-const token = jwt.sign({ id: user._id },'my site secret could be anything', { expiresIn: '15m' });
- res.json({ success: true, token, user: { id: user._id, name: user.firstName, email: user.email } });
+const token = jwt.sign({ id: user._id },'my site secret could be anything', { expiresIn: '7d' });
+ res.json({ success: true, token, user: { id: user._id, name: user.firstName, email: user.email, firstName: user.firstName, lastName: user.lastName } });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -83,7 +83,7 @@ exports.verifyOTP = async(req, res) =>{
     const refreshToken = jwt.sign({ id: user._id }, process.env.REFRESH_SECRET);
     user.refreshToken = refreshToken;
     await user.save();
-    res.json({ token, refreshToken, user: { id: user._id, name: user.firstName, email: user.email } });
+    res.json({ token, refreshToken, user: { id: user._id, name: user.name, email: user.email, firstName: user.firstName, lastName: user.lastName  } });
 
     // res.json({message: 'Email verified'})
   }
